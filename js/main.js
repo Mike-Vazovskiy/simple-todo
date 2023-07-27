@@ -1,5 +1,6 @@
 let inputbox = document.getElementById('taskText')
 let tasksContainer = document.getElementById('tasksContainer')
+let btnText = document.getElementById('addBtn')
 
 function addTask() {
     if(inputbox.value === ''){
@@ -35,3 +36,18 @@ function showTask() {
 }
 
 showTask()
+
+const mediaQuery = "screen and (max-width: 640px)"
+const updateStyles = () => {
+  const isMax640 = matchMedia(mediaQuery).matches   
+  matchMedia(mediaQuery).addEventListener("change", updateStyles, 
+   { 
+     once: true 
+   })
+  if (isMax640){
+      btnText.textContent = '+'
+  } else {
+      btnText.textContent = 'Добавить'
+  }
+}
+updateStyles(); // инициализация
